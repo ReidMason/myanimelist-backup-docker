@@ -28,3 +28,5 @@ def run_backup():
         log("Saving new backup")
         utils.backup_anime_list(new_list_data, username)
         log(f"Backup for {username} complete", Fore.GREEN)
+
+    log('Backups complete', Fore.GREEN)
