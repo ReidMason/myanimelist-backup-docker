@@ -4,6 +4,4 @@ This is designed to run in a docker container on unraid but can be run as a pyth
 
 ## Installation via docker-hub
 This is the easiest and recommended way to install.\
-Simply add the template repository below.
-```https://github.com/SkippyTheSnake/unraid-docker-templates```
-Then create a docker container using the new template.
+Simply add this repo to the templates list and create the container using the new template.
