@@ -12,5 +12,5 @@ ADD . /app
 # Install the dependencies
 RUN pip install -r requirements.txt
 
-# Run the program
-CMD ["python3", "-u", "run.py"]
+# Run the program with unbuffered argument
+CMD ["python3", "-u", "main.py"]

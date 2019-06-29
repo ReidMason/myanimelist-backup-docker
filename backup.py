@@ -1,26 +1,29 @@
-import json
-
-from colorama import Style, Back, Fore, init
-import utils
 from utils import log
-from config import USERNAMES, NUM_BACKUPS
+import utils
+from colorama import Back
+from config import USERNAMES
 
 
 def run_backup():
-  # Initialise colorama
-  init()
-  log('----- MyAnimeList backup started  -----', Back.CYAN, Fore.BLACK)
+    log('MyAnimeList backup started', Back.CYAN)
+    for username in USERNAMES:
+        log(f'Processing {username}', Back.CYAN)
+        # Get current list data for user
+        try:
+            new_list_data = utils.get_anime_list_data(username)
 
-  for i, username in enumerate(USERNAMES):
-    # Get anime list data from MyAnimeList
-    log(f'[{i + 1}/{len(USERNAMES)}] Getting list data for {username}', Fore.BLACK, Back.CYAN)
-    anime_list_data = utils.get_anime_list_data(username)
-    log('List data obtained', Fore.GREEN)
+        except AttributeError:
+            # Failed to obtain list data continue to next user
+            log("Error: Unable to obtain anime list data", Back.RED)
+            continue
 
-    # Check if backup is required
-    log(f'Checking if backup is required for {username}', Fore.CYAN)
-    if utils.get_previous_backup(username) != anime_list_data:
-      utils.backup_anime_list(anime_list_data, username)
-    log(f'Done {username}')
+        # Get most recent backup
+        recent_backup = utils.get_recent_backup(username)
 
-  log('Finished backups', Back.GREEN)
+        # Check if the recent backup needs updating
+        if new_list_data == recent_backup:
+            continue
+
+        # Save the new anime data
+        utils.backup_anime_list(new_list_data, username)
+        log(f"Backup for {username} complete", Back.GREEN)
