@@ -3,7 +3,7 @@ import os
 
 import requests
 from datetime import datetime
-from colorama import Style, Back, init
+from colorama import Style, Fore, init
 from bs4 import BeautifulSoup
 from config import BACKUP_PATH, NUM_BACKUPS
 from typing import Optional
@@ -56,7 +56,7 @@ def get_recent_backup(username: str) -> dict:
 
     # Check that the backup folder exists
     if not os.path.exists(path):
-        log(f"Creating backup folder for '{username}'", Back.YELLOW)
+        log(f"Creating backup folder for '{username}'", Fore.YELLOW)
         os.mkdir(path)
         return {}
 

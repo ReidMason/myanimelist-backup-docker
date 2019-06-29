@@ -1,20 +1,20 @@
 from utils import log
 import utils
-from colorama import Back
+from colorama import Fore
 from config import USERNAMES
 
 
 def run_backup():
-    log('MyAnimeList backup started', Back.CYAN)
+    log('MyAnimeList backup started', Fore.CYAN)
     for username in USERNAMES:
-        log(f'Processing {username}', Back.CYAN)
+        log(f'[/] Processing {username}', Fore.CYAN)
         # Get current list data for user
         try:
             new_list_data = utils.get_anime_list_data(username)
 
         except AttributeError:
             # Failed to obtain list data continue to next user
-            log("Error: Unable to obtain anime list data", Back.RED)
+            log("Error: Unable to obtain anime list data", Fore.RED)
             continue
 
         # Get most recent backup
@@ -26,4 +26,4 @@ def run_backup():
 
         # Save the new anime data
         utils.backup_anime_list(new_list_data, username)
-        log(f"Backup for {username} complete", Back.GREEN)
+        log(f"Backup for {username} complete", Fore.GREEN)
