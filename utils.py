@@ -88,6 +88,7 @@ def backup_anime_list(data: dict, username: str) -> None:
     log(f'Saving backup to "{filepath}"')
     with open(filepath, 'w') as f:
         json.dump(data, f)
+        os.chmod(filepath, 0o777)
 
     # Remove old backups
     prune_old_backups(username)
