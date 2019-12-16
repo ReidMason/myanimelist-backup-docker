@@ -28,14 +28,6 @@
             <Name>NUM_BACKUPS</Name>
             <Value>5</Value>
         </Variable>
-        <Variable>
-            <Name>PUID</Name>
-            <Value>99</Value>
-        </Variable>
-        <Variable>
-            <Name>PGID</Name>
-            <Value>100</Value>
-        </Variable>
     </Environment>
     <Data>
         <Volume>
