@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Containers>
-    <Date>2019-06-29</Date>
+    <Date>2019-12-16</Date>
     <Beta>False</Beta>
     <Name>MyAnimeList backup</Name>
     <Overview>
@@ -27,11 +27,6 @@
         <Variable>
             <Name>NUM_BACKUPS</Name>
             <Value>5</Value>
-        </Variable>
-        <Variable>
-            <Name>Unbuffered</Name>
-            <Value>0</Value>
-            <Display>hidden</Display>
         </Variable>
     </Environment>
     <Data>
