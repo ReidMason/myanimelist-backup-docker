@@ -7,9 +7,6 @@ if __name__ == '__main__':
     # Run the backup once at startup
     run_backup()
 
-    # Set the access permissions for the data directory
-    os.chmod('data', 0o777)
-
     # Run the backup every day at 7:05 PM
     schedule.every().day.at("19:05").do(run_backup)
 
